@@ -1,89 +1,517 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>CatchMail - Temporary Email</title>
+<title>Temporary Email</title>
+
 <style>
-*{box-sizing:border-box}
+*{
+  box-sizing:border-box;
+}
+
 body{
-margin:0;
-font-family:Arial,sans-serif;
-background:#0b1020;
-color:white;
-min-height:100vh
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+  color:#75485f;
+  min-height:100vh;
+  background:
+    radial-gradient(circle at 15% 15%,rgba(255,255,255,.9) 0 2px,transparent 3px),
+    radial-gradient(circle at 85% 30%,rgba(255,255,255,.8) 0 2px,transparent 3px),
+    linear-gradient(145deg,#fff0f6,#fbeaf3 45%,#f7eaf8);
+  background-size:90px 90px,120px 120px,100% 100%;
 }
+
+/* PAGE */
+
 .container{
-max-width:700px;
-margin:auto;
-padding:30px 15px
+  width:100%;
+  max-width:760px;
+  margin:auto;
+  padding:30px 15px 45px;
 }
+
 .card{
-background:#151c31;
-border:1px solid #303b5d;
-border-radius:20px;
-padding:22px
+  background:rgba(255,255,255,.88);
+  border:1px solid #f3c5d9;
+  border-radius:28px;
+  padding:28px;
+  box-shadow:
+    0 20px 55px rgba(174,105,137,.13);
 }
-h1{margin:0 0 8px}
-p{color:#aeb8d5}
-.email{
-display:flex;
-gap:8px;
-margin:20px 0
+
+/* HEADER */
+
+.header{
+  text-align:center;
+  margin-bottom:20px;
 }
+
+.header h1{
+  margin:0;
+  font-size:30px;
+  font-weight:800;
+  color:#a65b7c;
+  letter-spacing:-.5px;
+}
+
+.header p{
+  margin:7px 0 0;
+  font-size:14px;
+  color:#ad8195;
+}
+
+/* CHIBI */
+
+.chibi{
+  width:145px;
+  height:145px;
+  margin:0 auto 15px;
+  position:relative;
+}
+
+/* hair */
+
+.hair{
+  position:absolute;
+  width:108px;
+  height:112px;
+  left:18px;
+  top:13px;
+  background:#6f5060;
+  border-radius:52% 52% 45% 45%;
+  z-index:1;
+}
+
+.hair-left,
+.hair-right{
+  position:absolute;
+  width:32px;
+  height:80px;
+  background:#6f5060;
+  top:55px;
+  z-index:1;
+}
+
+.hair-left{
+  left:8px;
+  border-radius:25px 5px 25px 25px;
+  transform:rotate(8deg);
+}
+
+.hair-right{
+  right:8px;
+  border-radius:5px 25px 25px 25px;
+  transform:rotate(-8deg);
+}
+
+/* face */
+
+.face{
+  position:absolute;
+  width:88px;
+  height:88px;
+  left:29px;
+  top:38px;
+  background:#ffe3ed;
+  border-radius:48%;
+  z-index:2;
+  border:1px solid #e7afc5;
+}
+
+/* fringe */
+
+.fringe{
+  position:absolute;
+  width:82px;
+  height:42px;
+  left:32px;
+  top:27px;
+  background:#6f5060;
+  border-radius:50% 50% 35% 35%;
+  z-index:3;
+}
+
+.fringe:after{
+  content:"";
+  position:absolute;
+  width:25px;
+  height:38px;
+  background:#6f5060;
+  left:29px;
+  top:18px;
+  border-radius:0 0 50% 50%;
+  transform:rotate(7deg);
+}
+
+/* eyes */
+
+.eye{
+  position:absolute;
+  width:10px;
+  height:16px;
+  background:#684455;
+  border-radius:50%;
+  top:39px;
+}
+
+.eye:after{
+  content:"";
+  position:absolute;
+  width:3px;
+  height:5px;
+  background:white;
+  border-radius:50%;
+  left:2px;
+  top:2px;
+}
+
+.eye.left{
+  left:23px;
+}
+
+.eye.right{
+  right:23px;
+}
+
+/* blush */
+
+.blush{
+  position:absolute;
+  width:17px;
+  height:7px;
+  background:#f5a7c2;
+  border-radius:50%;
+  top:59px;
+  opacity:.65;
+}
+
+.blush.left{
+  left:8px;
+}
+
+.blush.right{
+  right:8px;
+}
+
+/* mouth */
+
+.mouth{
+  position:absolute;
+  left:50%;
+  top:61px;
+  width:8px;
+  height:5px;
+  border-bottom:2px solid #9b5b73;
+  border-radius:50%;
+  transform:translateX(-50%);
+}
+
+/* bow */
+
+.bow-left,
+.bow-right{
+  position:absolute;
+  width:31px;
+  height:23px;
+  background:#e994b7;
+  top:13px;
+  z-index:4;
+}
+
+.bow-left{
+  left:99px;
+  border-radius:80% 20% 20% 80%;
+  transform:rotate(15deg);
+}
+
+.bow-right{
+  left:117px;
+  border-radius:20% 80% 80% 20%;
+  transform:rotate(-15deg);
+}
+
+.bow-center{
+  position:absolute;
+  width:13px;
+  height:13px;
+  background:#d879a2;
+  border-radius:50%;
+  left:112px;
+  top:18px;
+  z-index:5;
+}
+
+/* EMAIL */
+
+.email-section{
+  background:#fff7fa;
+  border:1px solid #f1cada;
+  border-radius:20px;
+  padding:17px;
+}
+
+.label{
+  font-size:13px;
+  font-weight:700;
+  color:#a76782;
+  margin-bottom:9px;
+}
+
+.email-row{
+  display:flex;
+  gap:8px;
+}
+
 input{
-flex:1;
-min-width:0;
-padding:14px;
-border-radius:12px;
-border:1px solid #394566;
-background:#0d1427;
-color:white;
-font-size:16px
+  flex:1;
+  min-width:0;
+  height:48px;
+  padding:0 13px;
+  border:1px solid #e9bfd2;
+  border-radius:13px;
+  background:white;
+  color:#70495c;
+  font-size:14px;
+  font-weight:600;
+  outline:none;
 }
+
 button{
-border:0;
-border-radius:12px;
-padding:13px 17px;
-font-weight:bold;
-cursor:pointer;
-background:#5b5ce2;
-color:white
+  border:0;
+  min-height:46px;
+  padding:0 17px;
+  border-radius:13px;
+  font-size:13px;
+  font-weight:700;
+  color:white;
+  background:#df91b2;
+  box-shadow:0 3px 0 #c97699;
+  cursor:pointer;
+  transition:.12s;
 }
-.buttons{
-display:flex;
-gap:8px;
-flex-wrap:wrap
+
+button:active{
+  transform:translateY(2px);
+  box-shadow:0 1px 0 #c97699;
 }
+
+.actions{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:9px;
+  margin-top:10px;
+}
+
+.actions button:last-child{
+  background:#edb1c9;
+  box-shadow:0 3px 0 #d38ca9;
+}
+
+/* STATUS */
+
 .status{
-margin:15px 0;
-color:#aeb8d5
+  margin-top:12px;
+  padding:10px;
+  text-align:center;
+  font-size:12px;
+  color:#a8788e;
+  background:#fff3f7;
+  border-radius:12px;
 }
+
+/* TABS */
+
+.tabs{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:6px;
+  margin-top:18px;
+  padding:4px;
+  background:#fbeaf2;
+  border-radius:15px;
+}
+
+.tab{
+  padding:11px 5px;
+  text-align:center;
+  border-radius:11px;
+  font-size:13px;
+  font-weight:700;
+  color:#a66b83;
+  cursor:pointer;
+}
+
+.tab.active{
+  background:white;
+  color:#a85278;
+  box-shadow:0 3px 10px rgba(160,90,120,.08);
+}
+
+/* INBOX */
+
+.inbox-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin:18px 3px 8px;
+}
+
+.inbox-head h2{
+  margin:0;
+  font-size:18px;
+  color:#9f5676;
+}
+
+.count{
+  min-width:25px;
+  padding:3px 8px;
+  text-align:center;
+  border-radius:20px;
+  background:#e99bbb;
+  color:white;
+  font-size:11px;
+  font-weight:700;
+}
+
 .message{
-background:#0d1427;
-border:1px solid #303b5d;
-border-radius:14px;
-padding:15px;
-margin-top:10px
+  padding:14px;
+  margin-top:9px;
+  background:white;
+  border:1px solid #f0ccdc;
+  border-radius:16px;
+  cursor:pointer;
 }
-.message h3{margin:0 0 8px}
+
+.subject{
+  color:#995170;
+  font-size:14px;
+  font-weight:700;
+}
+
 .meta{
-font-size:12px;
-color:#8995b5;
-margin-bottom:10px
+  margin-top:6px;
+  color:#aa8192;
+  font-size:11px;
 }
-.body{
-white-space:pre-wrap;
-word-break:break-word
+
+.preview{
+  margin-top:7px;
+  color:#7d6170;
+  font-size:12px;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
 }
+
 .empty{
-text-align:center;
-padding:35px 10px;
-color:#8995b5
+  text-align:center;
+  padding:35px 10px;
+  color:#ad8798;
+  font-size:13px;
 }
+
+/* MODAL */
+
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  padding:15px;
+  background:rgba(75,43,58,.3);
+  align-items:center;
+  justify-content:center;
+  z-index:50;
+}
+
+.modal-box{
+  width:100%;
+  max-width:600px;
+  max-height:85vh;
+  overflow:auto;
+  background:#fff8fb;
+  border:1px solid #efbfd3;
+  border-radius:22px;
+  padding:18px;
+}
+
+.close{
+  float:right;
+  min-height:38px;
+  padding:0 13px;
+  background:#e7a1bd;
+}
+
+.modal-title{
+  padding-right:45px;
+  color:#98506f;
+}
+
+.modal-meta{
+  color:#a77d8d;
+  font-size:11px;
+  margin-top:6px;
+}
+
+.modal-body{
+  margin-top:12px;
+  padding:14px;
+  background:white;
+  border:1px solid #efd0dd;
+  border-radius:14px;
+  white-space:pre-wrap;
+  word-break:break-word;
+  font-size:13px;
+  line-height:1.55;
+}
+
+/* FOOTER */
+
+.footer{
+  text-align:center;
+  margin-top:18px;
+  color:#b18598;
+  font-size:11px;
+}
+
+.footer strong{
+  color:#a95878;
+}
+
+/* MOBILE */
+
 @media(max-width:500px){
-.email{flex-direction:column}
-.email button{width:100%}
+
+.container{
+  padding:12px 9px 30px;
+}
+
+.card{
+  padding:18px 14px;
+  border-radius:24px;
+}
+
+.header h1{
+  font-size:27px;
+}
+
+.chibi{
+  transform:scale(.9);
+  margin-bottom:7px;
+}
+
+.email-row{
+  flex-direction:column;
+}
+
+.email-row button{
+  width:100%;
+}
+
+.actions button{
+  width:100%;
+}
+
 }
 </style>
 </head>
@@ -91,75 +519,215 @@ color:#8995b5
 <body>
 
 <div class="container">
+
 <div class="card">
 
-<h1>✉️ CatchMail</h1>
-<p>Temporary Email — catch.devitads.my.id</p>
+<div class="header">
 
-<div class="email">
+<div class="chibi">
+
+<div class="hair"></div>
+<div class="hair-left"></div>
+<div class="hair-right"></div>
+
+<div class="face">
+
+<div class="eye left"></div>
+<div class="eye right"></div>
+
+<div class="blush left"></div>
+<div class="blush right"></div>
+
+<div class="mouth"></div>
+
+</div>
+
+<div class="fringe"></div>
+
+<div class="bow-left"></div>
+<div class="bow-right"></div>
+<div class="bow-center"></div>
+
+</div>
+
+<h1>Temporary Email</h1>
+
+<p>Simple, private and temporary email.</p>
+
+</div>
+
+
+<div class="email-section">
+
+<div class="label">
+Your temporary email address
+</div>
+
+<div class="email-row">
+
 <input id="email" readonly>
-<button onclick="copyEmail()">Copy</button>
+
+<button onclick="copyEmail()">
+Copy
+</button>
+
 </div>
 
-<div class="buttons">
-<button onclick="newEmail()">🎲 Email Baru</button>
-<button onclick="loadInbox()">🔄 Refresh Inbox</button>
 </div>
+
+
+<div class="actions">
+
+<button onclick="newEmail()">
+New Email
+</button>
+
+<button onclick="loadInbox()">
+Refresh
+</button>
+
+</div>
+
 
 <div id="status" class="status">
-Menyiapkan email...
+Preparing your email...
 </div>
+
+
+<div class="tabs">
+
+<div class="tab active"
+onclick="changeTab('inbox',this)">
+Inbox
+</div>
+
+<div class="tab"
+onclick="changeTab('new',this)">
+New
+</div>
+
+<div class="tab"
+onclick="changeTab('spam',this)">
+Spam
+</div>
+
+</div>
+
+
+<div class="inbox-head">
+
+<h2 id="sectionTitle">
+Inbox
+</h2>
+
+<span id="count" class="count">
+0
+</span>
+
+</div>
+
 
 <div id="inbox">
-<div class="empty">📭 Belum ada pesan.</div>
+
+<div class="empty">
+No emails yet.
 </div>
 
 </div>
+
+
+<div class="footer">
+Dibuat oleh <strong>@devitads</strong>
 </div>
+
+</div>
+
+</div>
+
+
+<div id="modal" class="modal">
+
+<div class="modal-box">
+
+<button class="close"
+onclick="closeMessage()">
+Close
+</button>
+
+<h2 id="modalSubject"
+class="modal-title">
+Email
+</h2>
+
+<div id="modalMeta"
+class="modal-meta"></div>
+
+<div id="modalBody"
+class="modal-body"></div>
+
+</div>
+
+</div>
+
 
 <script>
 
 const DOMAIN="catch.devitads.my.id";
 
+let messages=[];
+let currentTab="inbox";
+
+let readMessages=
+JSON.parse(
+localStorage.getItem("temporary_read")||"[]"
+);
+
+
 function randomEmail(){
 
-let random=Math.random()
+return "user"+
+Math.random()
 .toString(36)
-.substring(2,10);
-
-return "user"+random+"@"+DOMAIN;
+.substring(2,10)+
+"@"+
+DOMAIN;
 
 }
 
+
+function getEmail(){
+
+return localStorage.getItem(
+"temporary_email"
+);
+
+}
+
+
 function newEmail(){
 
-let address=randomEmail();
+const address=randomEmail();
 
 localStorage.setItem(
-"catchmail_address",
+"temporary_email",
 address
 );
 
-document.getElementById("email").value=address;
+document.getElementById("email").value=
+address;
 
-document.getElementById("inbox").innerHTML=
-'<div class="empty">📭 Belum ada pesan.</div>';
+messages=[];
+
+renderMessages();
 
 loadInbox();
 
 }
 
-function getEmail(){
-
-return localStorage.getItem(
-"catchmail_address"
-);
-
-}
 
 async function copyEmail(){
 
-let address=
+const address=
 document.getElementById("email").value;
 
 try{
@@ -167,7 +735,7 @@ try{
 await navigator.clipboard.writeText(address);
 
 document.getElementById("status").textContent=
-"✅ Email berhasil disalin!";
+"Email copied.";
 
 }catch(e){
 
@@ -178,9 +746,10 @@ address;
 
 }
 
+
 function escapeHTML(text){
 
-return String(text ?? "")
+return String(text??"")
 .replace(/&/g,"&amp;")
 .replace(/</g,"&lt;")
 .replace(/>/g,"&gt;")
@@ -189,102 +758,237 @@ return String(text ?? "")
 
 }
 
-async function loadInbox(){
 
-let address=getEmail();
+function changeTab(tab,element){
 
-if(!address)return;
+currentTab=tab;
 
-document.getElementById("status").textContent=
-"🔄 Mengecek inbox...";
+document.querySelectorAll(".tab")
+.forEach(function(tab){
 
-try{
+tab.classList.remove("active");
 
-let response=await fetch(
-"https://api.catchmail.io/api/v1/mailbox?address="
-+encodeURIComponent(address)
-+"&t="+Date.now()
-);
+});
 
-if(!response.ok)
-throw new Error("HTTP "+response.status);
+element.classList.add("active");
 
-let data=await response.json();
+document.getElementById("sectionTitle")
+.textContent=
+tab==="inbox"
+?"Inbox"
+:tab==="new"
+?"New"
+:"Spam";
 
-let messages=
-Array.isArray(data.messages)
-?data.messages
-:[];
+renderMessages();
 
-document.getElementById("status").textContent=
-"📬 "+(data.total ?? messages.length)+" pesan";
+}
 
-if(messages.length===0){
 
-document.getElementById("inbox").innerHTML=
-'<div class="empty">📭 Belum ada email masuk.<br>Tekan Refresh Inbox untuk mengecek lagi.</div>';
+function renderMessages(){
+
+const box=
+document.getElementById("inbox");
+
+if(currentTab==="spam"){
+
+box.innerHTML=
+'<div class="empty">No spam emails.</div>';
+
+document.getElementById("count")
+.textContent="0";
 
 return;
 
 }
 
-document.getElementById("inbox").innerHTML=
-messages.map(function(message){
+let list=messages;
 
-let subject=
-message.subject ||
-message.title ||
-"(Tanpa subjek)";
+if(currentTab==="new"){
 
-let sender=
-message.from ||
-message.sender ||
-message.from_email ||
-"Pengirim tidak diketahui";
+list=messages.filter(function(m){
 
-let date=
-message.date ||
-message.created_at ||
-message.received_at ||
-"";
+return !readMessages.includes(m.id);
 
-let body=
-message.text ||
-message.body ||
-message.content ||
+});
+
+}
+
+document.getElementById("count")
+.textContent=list.length;
+
+if(list.length===0){
+
+box.innerHTML=
+'<div class="empty">No emails yet.</div>';
+
+return;
+
+}
+
+box.innerHTML=
+list.map(function(m){
+
+const subject=
+m.subject||
+"(No subject)";
+
+const sender=
+m.from||
+"Unknown sender";
+
+const body=
+m.text||
+m.body||
+m.content||
 "";
 
 return `
-<div class="message">
 
-<h3>${escapeHTML(subject)}</h3>
+<div class="message"
+onclick="openMessage('${String(m.id).replace(/'/g,"")}')">
 
-<div class="meta">
-Dari: ${escapeHTML(sender)}
-${date ? " • "+escapeHTML(date) : ""}
+<div class="subject">
+${escapeHTML(subject)}
 </div>
 
-<div class="body">
+<div class="meta">
+${escapeHTML(sender)}
+${m.date?" · "+escapeHTML(m.date):""}
+</div>
+
+<div class="preview">
 ${escapeHTML(body)}
 </div>
 
 </div>
+
 `;
 
 }).join("");
 
+}
+
+
+function openMessage(id){
+
+const m=messages.find(function(x){
+
+return String(x.id)===String(id);
+
+});
+
+if(!m)return;
+
+if(!readMessages.includes(m.id)){
+
+readMessages.push(m.id);
+
+localStorage.setItem(
+"temporary_read",
+JSON.stringify(readMessages)
+);
+
+}
+
+document.getElementById(
+"modalSubject"
+).textContent=
+m.subject||"(No subject)";
+
+document.getElementById(
+"modalMeta"
+).textContent=
+(m.from||"Unknown sender")+
+(m.date?" · "+m.date:"");
+
+document.getElementById(
+"modalBody"
+).textContent=
+m.text||
+m.body||
+m.content||
+"No text content.";
+
+document.getElementById(
+"modal"
+).style.display="flex";
+
+renderMessages();
+
+}
+
+
+function closeMessage(){
+
+document.getElementById(
+"modal"
+).style.display="none";
+
+}
+
+
+async function loadInbox(){
+
+const address=getEmail();
+
+if(!address)return;
+
+document.getElementById("status")
+.textContent="Checking inbox...";
+
+try{
+
+const api=
+"https://api.catchmail.io/api/v1/mailbox?address="+
+encodeURIComponent(address);
+
+const proxy=
+"https://api.allorigins.win/raw?url="+
+encodeURIComponent(
+api+"&t="+Date.now()
+);
+
+const response=
+await fetch(proxy);
+
+if(!response.ok){
+
+throw new Error();
+
+}
+
+const data=
+await response.json();
+
+messages=
+Array.isArray(data.messages)
+?data.messages
+:[];
+
+document.getElementById("status")
+.textContent=
+messages.length+
+(messages.length===1
+?" email received."
+:" emails received.");
+
+renderMessages();
+
 }catch(error){
 
-document.getElementById("status").textContent=
-"❌ Gagal mengambil inbox. Coba Refresh.";
+document.getElementById("status")
+.textContent=
+"Unable to load inbox. Try Refresh.";
 
 }
 
 }
+
 
 function start(){
 
-let address=getEmail();
+const address=getEmail();
 
 if(!address){
 
@@ -292,22 +996,22 @@ newEmail();
 
 }else{
 
-document.getElementById("email").value=
-address;
+document.getElementById("email")
+.value=address;
 
 loadInbox();
 
 }
 
 }
+
 
 start();
 
-setInterval(function(){
-
-loadInbox();
-
-},10000);
+setInterval(
+loadInbox,
+10000
+);
 
 </script>
 
