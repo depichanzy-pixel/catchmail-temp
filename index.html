@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CatchMail - Temporary Email</title>
+<style>
+*{box-sizing:border-box}
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:#0b1020;
+color:white;
+min-height:100vh
+}
+.container{
+max-width:700px;
+margin:auto;
+padding:30px 15px
+}
+.card{
+background:#151c31;
+border:1px solid #303b5d;
+border-radius:20px;
+padding:22px
+}
+h1{margin:0 0 8px}
+p{color:#aeb8d5}
+.email{
+display:flex;
+gap:8px;
+margin:20px 0
+}
+input{
+flex:1;
+min-width:0;
+padding:14px;
+border-radius:12px;
+border:1px solid #394566;
+background:#0d1427;
+color:white;
+font-size:16px
+}
+button{
+border:0;
+border-radius:12px;
+padding:13px 17px;
+font-weight:bold;
+cursor:pointer;
+background:#5b5ce2;
+color:white
+}
+.buttons{
+display:flex;
+gap:8px;
+flex-wrap:wrap
+}
+.status{
+margin:15px 0;
+color:#aeb8d5
+}
+.message{
+background:#0d1427;
+border:1px solid #303b5d;
+border-radius:14px;
+padding:15px;
+margin-top:10px
+}
+.message h3{margin:0 0 8px}
+.meta{
+font-size:12px;
+color:#8995b5;
+margin-bottom:10px
+}
+.body{
+white-space:pre-wrap;
+word-break:break-word
+}
+.empty{
+text-align:center;
+padding:35px 10px;
+color:#8995b5
+}
+@media(max-width:500px){
+.email{flex-direction:column}
+.email button{width:100%}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+<div class="card">
+
+<h1>✉️ CatchMail</h1>
+<p>Temporary Email — catch.devitads.my.id</p>
+
+<div class="email">
+<input id="email" readonly>
+<button onclick="copyEmail()">Copy</button>
+</div>
+
+<div class="buttons">
+<button onclick="newEmail()">🎲 Email Baru</button>
+<button onclick="loadInbox()">🔄 Refresh Inbox</button>
+</div>
+
+<div id="status" class="status">
+Menyiapkan email...
+</div>
+
+<div id="inbox">
+<div class="empty">📭 Belum ada pesan.</div>
+</div>
+
+</div>
+</div>
+
+<script>
+
+const DOMAIN="catch.devitads.my.id";
+
+function randomEmail(){
+
+let random=Math.random()
+.toString(36)
+.substring(2,10);
+
+return "user"+random+"@"+DOMAIN;
+
+}
+
+function newEmail(){
+
+let address=randomEmail();
+
+localStorage.setItem(
+"catchmail_address",
+address
+);
+
+document.getElementById("email").value=address;
+
+document.getElementById("inbox").innerHTML=
+'<div class="empty">📭 Belum ada pesan.</div>';
+
+loadInbox();
+
+}
+
+function getEmail(){
+
+return localStorage.getItem(
+"catchmail_address"
+);
+
+}
+
+async function copyEmail(){
+
+let address=
+document.getElementById("email").value;
+
+try{
+
+await navigator.clipboard.writeText(address);
+
+document.getElementById("status").textContent=
+"✅ Email berhasil disalin!";
+
+}catch(e){
+
+document.getElementById("status").textContent=
+address;
+
+}
+
+}
+
+function escapeHTML(text){
+
+return String(text ?? "")
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
+
+}
+
+async function loadInbox(){
+
+let address=getEmail();
+
+if(!address)return;
+
+document.getElementById("status").textContent=
+"🔄 Mengecek inbox...";
+
+try{
+
+let response=await fetch(
+"https://api.catchmail.io/api/v1/mailbox?address="
++encodeURIComponent(address)
++"&t="+Date.now()
+);
+
+if(!response.ok)
+throw new Error("HTTP "+response.status);
+
+let data=await response.json();
+
+let messages=
+Array.isArray(data.messages)
+?data.messages
+:[];
+
+document.getElementById("status").textContent=
+"📬 "+(data.total ?? messages.length)+" pesan";
+
+if(messages.length===0){
+
+document.getElementById("inbox").innerHTML=
+'<div class="empty">📭 Belum ada email masuk.<br>Tekan Refresh Inbox untuk mengecek lagi.</div>';
+
+return;
+
+}
+
+document.getElementById("inbox").innerHTML=
+messages.map(function(message){
+
+let subject=
+message.subject ||
+message.title ||
+"(Tanpa subjek)";
+
+let sender=
+message.from ||
+message.sender ||
+message.from_email ||
+"Pengirim tidak diketahui";
+
+let date=
+message.date ||
+message.created_at ||
+message.received_at ||
+"";
+
+let body=
+message.text ||
+message.body ||
+message.content ||
+"";
+
+return `
+<div class="message">
+
+<h3>${escapeHTML(subject)}</h3>
+
+<div class="meta">
+Dari: ${escapeHTML(sender)}
+${date ? " • "+escapeHTML(date) : ""}
+</div>
+
+<div class="body">
+${escapeHTML(body)}
+</div>
+
+</div>
+`;
+
+}).join("");
+
+}catch(error){
+
+document.getElementById("status").textContent=
+"❌ Gagal mengambil inbox. Coba Refresh.";
+
+}
+
+}
+
+function start(){
+
+let address=getEmail();
+
+if(!address){
+
+newEmail();
+
+}else{
+
+document.getElementById("email").value=
+address;
+
+loadInbox();
+
+}
+
+}
+
+start();
+
+setInterval(function(){
+
+loadInbox();
+
+},10000);
+
+</script>
+
+</body>
+  </html>
