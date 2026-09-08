@@ -6,53 +6,49 @@
 <title>Temporary Email</title>
 
 <style>
-*{
-box-sizing:border-box;
-}
+*{box-sizing:border-box}
 
 body{
 margin:0;
 font-family:Arial,sans-serif;
 background:#fff1f7;
-color:#444;
+color:#444
 }
 
 .container{
 width:min(760px,94%);
-margin:35px auto;
+margin:35px auto
 }
 
 .card{
 background:#fff;
 border-radius:24px;
 padding:25px;
-box-shadow:0 10px 35px rgba(220,130,170,.15);
+box-shadow:0 10px 35px rgba(220,130,170,.15)
 }
 
 .header{
 text-align:center;
-margin-bottom:22px;
+margin-bottom:22px
 }
 
 .header h1{
 margin:5px 0;
 font-size:28px;
-color:#d86c9d;
+color:#d86c9d
 }
 
 .header p{
 margin:0;
 font-size:14px;
-color:#999;
+color:#999
 }
-
-/* CUTE GIRL */
 
 .chibi{
 width:100px;
 height:100px;
 margin:0 auto 8px;
-position:relative;
+position:relative
 }
 
 .face{
@@ -63,7 +59,7 @@ background:#ffd9c9;
 border-radius:50%;
 left:18px;
 top:25px;
-z-index:2;
+z-index:2
 }
 
 .hair{
@@ -74,7 +70,7 @@ background:#3d3540;
 border-radius:48% 48% 42% 42%;
 left:9px;
 top:13px;
-z-index:1;
+z-index:1
 }
 
 .fringe{
@@ -85,7 +81,7 @@ background:#3d3540;
 left:14px;
 top:15px;
 z-index:3;
-border-radius:0 0 50% 50%;
+border-radius:0 0 50% 50%
 }
 
 .eye{
@@ -95,16 +91,11 @@ height:9px;
 background:#4b3b43;
 border-radius:50%;
 top:52px;
-z-index:4;
+z-index:4
 }
 
-.eye.left{
-left:34px;
-}
-
-.eye.right{
-left:61px;
-}
+.eye.left{left:34px}
+.eye.right{left:61px}
 
 .blush{
 position:absolute;
@@ -113,16 +104,11 @@ height:7px;
 background:#f3a6b8;
 border-radius:50%;
 top:64px;
-z-index:4;
+z-index:4
 }
 
-.blush.left{
-left:27px;
-}
-
-.blush.right{
-left:64px;
-}
+.blush.left{left:27px}
+.blush.right{left:64px}
 
 .mouth{
 position:absolute;
@@ -132,7 +118,7 @@ border-bottom:2px solid #c4778d;
 border-radius:50%;
 left:48px;
 top:69px;
-z-index:4;
+z-index:4
 }
 
 .bow-left,
@@ -142,19 +128,19 @@ width:25px;
 height:22px;
 background:#ee91b6;
 top:5px;
-z-index:5;
+z-index:5
 }
 
 .bow-left{
 left:14px;
 border-radius:80% 20% 20% 80%;
-transform:rotate(-18deg);
+transform:rotate(-18deg)
 }
 
 .bow-right{
 left:61px;
 border-radius:20% 80% 80% 20%;
-transform:rotate(18deg);
+transform:rotate(18deg)
 }
 
 .bow-center{
@@ -165,13 +151,13 @@ background:#d96b9b;
 border-radius:50%;
 left:50px;
 top:11px;
-z-index:6;
+z-index:6
 }
 
 .email-box{
 display:flex;
 gap:10px;
-margin-top:18px;
+margin-top:18px
 }
 
 .email-box input{
@@ -182,7 +168,7 @@ border-radius:13px;
 padding:14px;
 font-size:14px;
 outline:none;
-color:#555;
+color:#555
 }
 
 button{
@@ -191,35 +177,35 @@ border-radius:12px;
 padding:12px 16px;
 cursor:pointer;
 font-size:14px;
-font-weight:600;
+font-weight:600
 }
 
 .copy{
 background:#e990b6;
-color:white;
+color:white
 }
 
 .new{
 background:#f8d6e5;
-color:#9c5275;
+color:#9c5275
 }
 
 .refresh{
 background:#f3edf0;
-color:#666;
+color:#666
 }
 
 .buttons{
 display:flex;
 gap:8px;
-margin-top:10px;
+margin-top:10px
 }
 
 .status{
 text-align:center;
 font-size:13px;
 color:#999;
-margin:14px 0;
+margin:14px 0
 }
 
 .tabs{
@@ -227,7 +213,7 @@ display:flex;
 gap:8px;
 margin-top:20px;
 border-bottom:1px solid #f2dce6;
-padding-bottom:8px;
+padding-bottom:8px
 }
 
 .tab{
@@ -235,31 +221,31 @@ padding:10px 15px;
 cursor:pointer;
 font-size:14px;
 color:#999;
-border-radius:10px;
+border-radius:10px
 }
 
 .tab.active{
 background:#f9d9e7;
 color:#b85c87;
-font-weight:bold;
+font-weight:bold
 }
 
 .section-head{
 display:flex;
 justify-content:space-between;
 align-items:center;
-margin:18px 0 10px;
+margin:18px 0 10px
 }
 
 .section-head h2{
 font-size:17px;
 margin:0;
-color:#555;
+color:#555
 }
 
 .count{
 font-size:12px;
-color:#aaa;
+color:#aaa
 }
 
 .message{
@@ -268,24 +254,23 @@ border-radius:15px;
 padding:15px;
 margin-bottom:10px;
 cursor:pointer;
-background:#fff;
-transition:.15s;
+background:#fff
 }
 
 .message:hover{
-background:#fff8fb;
+background:#fff8fb
 }
 
 .subject{
 font-weight:bold;
 color:#555;
-margin-bottom:7px;
+margin-bottom:7px
 }
 
 .meta{
 font-size:12px;
 color:#999;
-margin-bottom:8px;
+margin-bottom:8px
 }
 
 .preview{
@@ -293,28 +278,26 @@ font-size:13px;
 color:#777;
 white-space:nowrap;
 overflow:hidden;
-text-overflow:ellipsis;
+text-overflow:ellipsis
 }
 
 .empty{
 text-align:center;
 padding:35px 10px;
 color:#aaa;
-font-size:14px;
+font-size:14px
 }
 
 .footer{
 text-align:center;
 font-size:12px;
 color:#aaa;
-margin-top:20px;
+margin-top:20px
 }
 
 .footer strong{
-color:#d86c9d;
+color:#d86c9d
 }
-
-/* MODAL */
 
 .modal{
 position:fixed;
@@ -324,7 +307,7 @@ display:none;
 align-items:center;
 justify-content:center;
 padding:15px;
-z-index:100;
+z-index:100
 }
 
 .modal-box{
@@ -333,30 +316,29 @@ width:min(700px,100%);
 max-height:90vh;
 border-radius:20px;
 overflow:hidden;
-box-shadow:0 15px 50px rgba(0,0,0,.2);
+box-shadow:0 15px 50px rgba(0,0,0,.2)
 }
 
 .modal-head{
 padding:18px 20px;
-border-bottom:1px solid #f0dfe6;
+border-bottom:1px solid #f0dfe6
 }
 
 .modal-head h3{
 margin:0 0 7px;
 font-size:17px;
-color:#555;
+color:#555
 }
 
 .modal-meta{
 font-size:12px;
-color:#999;
+color:#999
 }
 
 .modal-body{
-padding:0;
 height:60vh;
 overflow:auto;
-background:#fff;
+background:#fff
 }
 
 .email-frame{
@@ -365,7 +347,7 @@ width:100%;
 height:100%;
 min-height:450px;
 border:0;
-background:white;
+background:white
 }
 
 .text-body{
@@ -373,7 +355,7 @@ padding:20px;
 white-space:pre-wrap;
 word-break:break-word;
 font-size:14px;
-line-height:1.6;
+line-height:1.6
 }
 
 .modal-close{
@@ -381,31 +363,27 @@ width:100%;
 border-radius:0;
 background:#f9d9e7;
 color:#a55376;
-padding:14px;
+padding:14px
 }
-
-/* MOBILE */
 
 @media(max-width:600px){
-.card{
-padding:18px;
-}
+.card{padding:18px}
 
 .email-box{
-flex-direction:column;
+flex-direction:column
 }
 
 .buttons{
 display:grid;
-grid-template-columns:1fr 1fr;
+grid-template-columns:1fr 1fr
 }
 
 .refresh{
-grid-column:1/-1;
+grid-column:1/-1
 }
 
 .modal-body{
-height:65vh;
+height:65vh
 }
 }
 </style>
@@ -414,7 +392,6 @@ height:65vh;
 <body>
 
 <div class="container">
-
 <div class="card">
 
 <div class="header">
@@ -426,10 +403,8 @@ height:65vh;
 <div class="face">
 <div class="eye left"></div>
 <div class="eye right"></div>
-
 <div class="blush left"></div>
 <div class="blush right"></div>
-
 <div class="mouth"></div>
 </div>
 
@@ -445,12 +420,7 @@ height:65vh;
 
 <div class="email-box">
 
-<input
-id="email"
-type="text"
-readonly
-placeholder="Creating email..."
->
+<input id="email" type="text" readonly>
 
 <button class="copy" onclick="copyEmail()">
 Copy
@@ -476,21 +446,15 @@ Checking inbox...
 
 <div class="tabs">
 
-<div
-class="tab active"
-onclick="changeTab('inbox',this)">
+<div class="tab active" onclick="changeTab('inbox',this)">
 Inbox
 </div>
 
-<div
-class="tab"
-onclick="changeTab('new',this)">
+<div class="tab" onclick="changeTab('new',this)">
 New
 </div>
 
-<div
-class="tab"
-onclick="changeTab('spam',this)">
+<div class="tab" onclick="changeTab('spam',this)">
 Spam
 </div>
 
@@ -498,20 +462,14 @@ Spam
 
 <div class="section-head">
 
-<h2 id="sectionTitle">
-Inbox
-</h2>
+<h2 id="sectionTitle">Inbox</h2>
 
-<span id="count" class="count">
-0
-</span>
+<span id="count" class="count">0</span>
 
 </div>
 
 <div id="inbox">
-<div class="empty">
-No emails yet.
-</div>
+<div class="empty">No emails yet.</div>
 </div>
 
 <div class="footer">
@@ -519,11 +477,8 @@ Dibuat oleh <strong>@devitads</strong>
 </div>
 
 </div>
-
 </div>
 
-
-<!-- EMAIL MODAL -->
 
 <div id="modal" class="modal">
 
@@ -531,9 +486,7 @@ Dibuat oleh <strong>@devitads</strong>
 
 <div class="modal-head">
 
-<h3 id="modalSubject">
-Email
-</h3>
+<h3 id="modalSubject">Email</h3>
 
 <div id="modalMeta" class="modal-meta"></div>
 
@@ -541,14 +494,11 @@ Email
 
 <div id="modalBody" class="modal-body"></div>
 
-<button
-class="modal-close"
-onclick="closeMessage()">
+<button class="modal-close" onclick="closeMessage()">
 Close
 </button>
 
 </div>
-
 </div>
 
 
@@ -560,26 +510,17 @@ let messages=[];
 let currentTab="inbox";
 
 let readMessages=
-JSON.parse(
-localStorage.getItem("temporary_read")||"[]"
-);
+JSON.parse(localStorage.getItem("temporary_read")||"[]");
 
-
-/* CREATE RANDOM EMAIL */
 
 function randomEmail(){
 
 return "user"+
-Math.random()
-.toString(36)
-.substring(2,10)+
-"@"+
-DOMAIN;
+Math.random().toString(36).substring(2,10)+
+"@"+DOMAIN;
 
 }
 
-
-/* GET CURRENT EMAIL */
 
 function getEmail(){
 
@@ -588,19 +529,13 @@ return localStorage.getItem("temporary_email");
 }
 
 
-/* CREATE NEW EMAIL */
-
 function newEmail(){
 
 const address=randomEmail();
 
-localStorage.setItem(
-"temporary_email",
-address
-);
+localStorage.setItem("temporary_email",address);
 
-document.getElementById("email").value=
-address;
+document.getElementById("email").value=address;
 
 messages=[];
 
@@ -611,31 +546,26 @@ loadInbox();
 }
 
 
-/* COPY EMAIL */
-
 async function copyEmail(){
 
-const address=
-document.getElementById("email").value;
+const address=document.getElementById("email").value;
 
 try{
 
 await navigator.clipboard.writeText(address);
 
-document.getElementById("status")
-.textContent="Email copied.";
+document.getElementById("status").textContent=
+"Email copied.";
 
 }catch(e){
 
-document.getElementById("status")
-.textContent=address;
+document.getElementById("status").textContent=
+address;
 
 }
 
 }
 
-
-/* ESCAPE TEXT */
 
 function escapeHTML(text){
 
@@ -649,50 +579,35 @@ return String(text??"")
 }
 
 
-/* CHANGE TAB */
-
 function changeTab(tab,element){
 
 currentTab=tab;
 
-document
-.querySelectorAll(".tab")
-.forEach(function(x){
-
+document.querySelectorAll(".tab").forEach(function(x){
 x.classList.remove("active");
-
 });
 
 element.classList.add("active");
 
-document.getElementById("sectionTitle")
-.textContent=
-tab==="inbox"
-?"Inbox"
-:
-tab==="new"
-?"New"
-:"Spam";
+document.getElementById("sectionTitle").textContent=
+tab==="inbox"?"Inbox":
+tab==="new"?"New":"Spam";
 
 renderMessages();
 
 }
 
 
-/* SHOW MESSAGES */
-
 function renderMessages(){
 
-const box=
-document.getElementById("inbox");
+const box=document.getElementById("inbox");
 
 if(currentTab==="spam"){
 
 box.innerHTML=
 '<div class="empty">No spam emails.</div>';
 
-document.getElementById("count")
-.textContent="0";
+document.getElementById("count").textContent="0";
 
 return;
 
@@ -704,16 +619,13 @@ if(currentTab==="new"){
 
 list=messages.filter(function(m){
 
-return !readMessages.includes(
-String(m.id)
-);
+return !readMessages.includes(String(m.id));
 
 });
 
 }
 
-document.getElementById("count")
-.textContent=list.length;
+document.getElementById("count").textContent=list.length;
 
 if(list.length===0){
 
@@ -724,35 +636,26 @@ return;
 
 }
 
-box.innerHTML=
-list.map(function(m){
-
-const subject=
-m.subject||"(No subject)";
-
-const sender=
-m.from||"Unknown sender";
+box.innerHTML=list.map(function(m){
 
 return `
-
 <div class="message"
 onclick="openMessage('${String(m.id).replace(/'/g,"")}')">
 
 <div class="subject">
-${escapeHTML(subject)}
+${escapeHTML(m.subject||"(No subject)")}
 </div>
 
 <div class="meta">
-${escapeHTML(sender)}
+${escapeHTML(m.from||"Unknown sender")}
 ${m.date?" · "+escapeHTML(m.date):""}
 </div>
 
 <div class="preview">
-Click to open email
+Open email
 </div>
 
 </div>
-
 `;
 
 }).join("");
@@ -760,12 +663,13 @@ Click to open email
 }
 
 
-/* OPEN EMAIL + LOAD FULL CONTENT */
+/*
+OPEN FULL EMAIL
+*/
 
 async function openMessage(id){
 
-const m=
-messages.find(function(x){
+const m=messages.find(function(x){
 
 return String(x.id)===String(id);
 
@@ -777,8 +681,6 @@ const address=getEmail();
 
 if(!address)return;
 
-
-/* MARK AS READ */
 
 if(!readMessages.includes(String(m.id))){
 
@@ -792,30 +694,20 @@ JSON.stringify(readMessages)
 }
 
 
-/* MODAL HEADER */
-
-document.getElementById("modalSubject")
-.textContent=
+document.getElementById("modalSubject").textContent=
 m.subject||"(No subject)";
 
-document.getElementById("modalMeta")
-.textContent=
+document.getElementById("modalMeta").textContent=
 (m.from||"Unknown sender")+
 (m.date?" · "+m.date:"");
 
 
-/* SHOW MODAL */
-
-const modal=
-document.getElementById("modal");
+const modal=document.getElementById("modal");
 
 modal.style.display="flex";
 
 
-/* LOADING */
-
-const bodyBox=
-document.getElementById("modalBody");
+const bodyBox=document.getElementById("modalBody");
 
 bodyBox.innerHTML=
 '<div class="empty">Loading email...</div>';
@@ -823,15 +715,7 @@ bodyBox.innerHTML=
 
 try{
 
-/*
-Catchmail list API hanya memberikan
-data ringkas.
-
-Untuk isi email digunakan:
-GET /api/v1/message/{id}?mailbox=...
-*/
-
-const detailApi=
+const api=
 "https://api.catchmail.io/api/v1/message/"+
 encodeURIComponent(m.id)+
 "?mailbox="+
@@ -839,58 +723,59 @@ encodeURIComponent(address);
 
 
 /*
-Gunakan proxy supaya halaman GitHub Pages
-bisa mengambil data dari API.
+Gunakan AllOrigins hanya sebagai penghubung
+agar GitHub Pages dapat membaca API.
 */
 
 const proxy=
 "https://api.allorigins.win/raw?url="+
-encodeURIComponent(
-detailApi+"&t="+Date.now()
-);
+encodeURIComponent(api);
 
 
-const response=
-await fetch(proxy);
+const response=await fetch(proxy,{
+cache:"no-store"
+});
 
 
 if(!response.ok){
 
-throw new Error("Failed");
+throw new Error("HTTP "+response.status);
 
 }
 
 
-const detail=
-await response.json();
+const detail=await response.json();
 
 
-const html=
-detail.body &&
-detail.body.html;
+let html="";
 
-const text=
-detail.body &&
-detail.body.text;
+let text="";
 
 
-/*
-Kalau email punya HTML,
-tampilkan dalam iframe sandbox.
+if(detail.body){
 
-Script email tidak diizinkan berjalan.
-Link biasa diarahkan ke tab baru.
-*/
+html=detail.body.html||"";
 
-if(html){
+text=detail.body.text||"";
+
+}
+
 
 bodyBox.innerHTML="";
 
 
-const iframe=
-document.createElement("iframe");
+if(html){
+
+const iframe=document.createElement("iframe");
 
 iframe.className="email-frame";
+
+
+/*
+Email dijalankan di sandbox.
+Script email tidak boleh berjalan.
+Link biasa diarahkan ke tab baru.
+*/
 
 iframe.setAttribute(
 "sandbox",
@@ -899,16 +784,16 @@ iframe.setAttribute(
 
 
 iframe.srcdoc=
-"<!doctype html>"+
+"<!DOCTYPE html>"+
 "<html>"+
 "<head>"+
 "<meta name='viewport' content='width=device-width,initial-scale=1'>"+
 "<base target='_blank'>"+
 "<style>"+
-"body{font-family:Arial,sans-serif;color:#333;padding:16px;word-break:break-word;line-height:1.5}"+
+"body{font-family:Arial,sans-serif;color:#333;padding:18px;line-height:1.5;word-break:break-word}"+
 "img{max-width:100%;height:auto}"+
+"table{max-width:100%;overflow:auto}"+
 "a{word-break:break-word}"+
-"table{max-width:100%;width:auto}"+
 "</style>"+
 "</head>"+
 "<body>"+
@@ -919,54 +804,46 @@ html+
 
 bodyBox.appendChild(iframe);
 
+}else if(text){
 
-/*
-Kalau hanya text,
-tampilkan text biasa.
-*/
+const div=document.createElement("div");
+
+div.className="text-body";
+
+div.textContent=text;
+
+bodyBox.appendChild(div);
 
 }else{
 
-bodyBox.innerHTML="";
-
-const textDiv=
-document.createElement("div");
-
-textDiv.className="text-body";
-
-textDiv.textContent=
-text||"No text content.";
-
-bodyBox.appendChild(textDiv);
+bodyBox.innerHTML=
+'<div class="empty">Isi email kosong.</div>';
 
 }
 
 }catch(error){
 
+console.error(error);
+
 bodyBox.innerHTML=
 '<div class="empty">'+
-'Email ditemukan, tetapi isi email gagal dibuka. Coba lagi.'+
+'Gagal mengambil isi email.<br><br>'+
+'Silakan tekan Refresh lalu buka email lagi.'+
 '</div>';
 
 }
-
 
 renderMessages();
 
 }
 
 
-/* CLOSE EMAIL */
-
 function closeMessage(){
 
-document.getElementById("modal")
-.style.display="none";
+document.getElementById("modal").style.display="none";
 
 }
 
-
-/* LOAD INBOX */
 
 async function loadInbox(){
 
@@ -975,8 +852,8 @@ const address=getEmail();
 if(!address)return;
 
 
-document.getElementById("status")
-.textContent="Checking inbox...";
+document.getElementById("status").textContent=
+"Checking inbox...";
 
 
 try{
@@ -986,19 +863,14 @@ const api=
 encodeURIComponent(address);
 
 
-/*
-CORS proxy
-*/
-
 const proxy=
 "https://api.allorigins.win/raw?url="+
-encodeURIComponent(
-api+"&t="+Date.now()
-);
+encodeURIComponent(api+"&t="+Date.now());
 
 
-const response=
-await fetch(proxy);
+const response=await fetch(proxy,{
+cache:"no-store"
+});
 
 
 if(!response.ok){
@@ -1008,8 +880,7 @@ throw new Error();
 }
 
 
-const data=
-await response.json();
+const data=await response.json();
 
 
 messages=
@@ -1018,31 +889,24 @@ Array.isArray(data.messages)
 :[];
 
 
-document.getElementById("status")
-.textContent=
+document.getElementById("status").textContent=
 messages.length+
-(
-messages.length===1
+(messages.length===1
 ?" email received."
-:" emails received."
-);
+:" emails received.");
 
 
 renderMessages();
 
-
 }catch(error){
 
-document.getElementById("status")
-.textContent=
+document.getElementById("status").textContent=
 "Unable to load inbox. Try Refresh.";
 
 }
 
 }
 
-
-/* START */
 
 function start(){
 
@@ -1054,8 +918,7 @@ newEmail();
 
 }else{
 
-document.getElementById("email")
-.value=address;
+document.getElementById("email").value=address;
 
 loadInbox();
 
@@ -1067,18 +930,10 @@ loadInbox();
 start();
 
 
-/* AUTO REFRESH EVERY 10 SECONDS */
-
-setInterval(
-loadInbox,
-10000
-);
+setInterval(loadInbox,10000);
 
 
-/* CLOSE MODAL WHEN CLICK OUTSIDE */
-
-document.getElementById("modal")
-.addEventListener(
+document.getElementById("modal").addEventListener(
 "click",
 function(e){
 
@@ -1088,8 +943,7 @@ closeMessage();
 
 }
 
-}
-);
+});
 
 </script>
 
